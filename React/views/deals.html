@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиенты</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <ul class="header">
+            <li><a href="clients.html">Клиенты</a></li>
+            <li><a href="products.html">Товары</a></li>
+            <li><a href="categories.html">Категории товаров</a></li>
+            <li><a href="leases.html">Сдачи в ломбард</a></li>
+            <li><a href="deals.html">Договоры</a></li>
+        </ul>
+    </header>
+
+    <div class="scroll-table">
+        <table id="tableHeader"> 
+            <thead>
+                <tr>
+                    <td>Номер договора</td>
+                    <td>Комиссионные</td>
+                    <td>Дата возврата</td>
+                    <td>Дата регистрации</td>
+                    <td>Клиент</td>
+
+                </tr>
+            </thead>
+        </table>	
+        <div class="scroll-table-body">
+            <table id="tableBody">
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>	
+    </div>
+
+    <form name = 'dealForm' action="">
+        <p id="dealId">Договор №</p>
+        <div class="wrap">
+            <input name='dealNumber' class='validate' type="number" placeholder="Номер договора" required>
+            <input name='dealSum' class='validate' type="number" placeholder="Комиссионные" required>
+            <input name='dealReturnDate' class='validate' type="date" placeholder="Дата возврата" required>
+            <input name='dealRegistrationDate' class='validate' type="date" placeholder="Дата регистрации" required>
+            <select name='dealClient' class='validate' type="number" placeholder="Клиент" required></select>
+        </div>
+        <div class=".buttons">
+            <button type="button" onclick="insertDeal()">Добавить</button>
+            <button type="button" onclick="updateDeal()">Обновить</button>
+            <button type="button" onclick="deleteDeal()">Удалить</button>
+        </div>
+    </form>
+    <script src="../scripts/deals.js"></script>        
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиенты</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <ul class="header">
+            <li><a href="clients.html">Клиенты</a></li>
+            <li><a href="products.html">Товары</a></li>
+            <li><a href="categories.html">Категории товаров</a></li>
+            <li><a href="leases.html">Сдачи в ломбард</a></li>
+            <li><a href="deals.html">Договоры</a></li>
+        </ul>
+    </header>
+
+    <div class="scroll-table">
+        <table id="tableHeader"> 
+            <thead>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>Имя</td>
+                    <td>Отчество</td>
+                    <td>Номер паспорта</td>
+                    <td>Дата выдачи паспорта</td>
+                    <td>Кем выдан паспорт</td>
+                </tr>
+            </thead>
+        </table>	
+        <div class="scroll-table-body">
+            <table id="tableBody">
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>	
+    </div>
+
+    <form name = 'clientForm' action="">
+        <p id="clientId">Клиент №</p>
+        <div class="wrap">
+            <input name='clientSurname' class='validate' type="text" placeholder="Фамилия" required>
+            <input name='clientName' class='validate' type="text" placeholder="Имя" required>
+            <input name='clientPatronomyc' class='validate' type="text" placeholder="Отчество" required>
+            <input name='clientNumber' class='validate' type="number" placeholder="Номер паспорта" required>
+            <input name='clientDate' class='validate' type="date" placeholder="Дата выдачи паспорта" required>
+            <input name='clientGiver' class='validate' type="text" placeholder="Кем выдан паспорт" required>
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="insertClient()">Добавить</button>
+            <button type="button" onclick="updateClient()">Обновить</button>
+            <button type="button" onclick="deleteClient()">Удалить</button>
+        </div>
+    </form>
+    <script src="../scripts/clients.js"></script>        
+
+</body>
+</html>

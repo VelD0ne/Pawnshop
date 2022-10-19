@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <ul class="header">
+            <li><a href="clients.html">Клиенты</a></li>
+            <li><a href="products.html">Товары</a></li>
+            <li><a href="categories.html">Категории товаров</a></li>
+            <li><a href="leases.html">Сдачи в ломбард</a></li>
+            <li><a href="deals.html">Договоры</a></li>
+        </ul>
+    </header>
+
+    <div class="scroll-table">
+        <table id="tableHeader"> 
+            <thead>
+                <tr>
+                    <td>Название</td>
+                    <td>Количество</td>
+                    <td>Категория товаров</td>
+                    <td>Стоимость</td>
+                </tr>
+            </thead>
+        </table>	
+        <div class="scroll-table-body">
+            <table id="tableBody">
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>	
+    </div>
+
+    <form name = 'productForm' action="">
+        <p id="productId">Товар №</p>
+        <div class="wrap">
+
+            <input name='productName' class='validate' type="text" placeholder="Название">
+            <input name='productAmount' class='validate' type="number" placeholder="Количество">
+            <select name='productCategory' class='validate' >
+            <input name='productCost' class='validate' type="number" placeholder="Стоимость">
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="insertProduct()">Добавить</button>
+            <button type="button" onclick="updateProduct()">Обновить</button>
+            <button type="button" onclick="deleteProduct()">Удалить</button>
+        </div>
+
+    </form>
+    <script src="../scripts/products.js"></script>        
+
+</body>
+</html>

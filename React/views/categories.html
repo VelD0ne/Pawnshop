@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории товаров</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header>
+        <ul class="header">
+            <li><a href="clients.html">Клиенты</a></li>
+            <li><a href="products.html">Товары</a></li>
+            <li><a href="categories.html">Категории товаров</a></li>
+            <li><a href="leases.html">Сдачи в ломбард</a></li>
+            <li><a href="deals.html">Договоры</a></li>
+        </ul>
+    </header>
+
+    <div class="scroll-table">
+        <table id="tableHeader"> 
+            <thead>
+                <tr>
+                    <td>Название</td>
+                </tr>
+            </thead>
+        </table>	
+        <div class="scroll-table-body">
+            <table id="tableBody">
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>	
+    </div>
+
+    <form name = 'categoryForm' action="">
+        <p id="categoryId">Категория №</p>
+        <div class="wrap">
+            <input name='categoryName' class='validate' type="text" placeholder="Название" required>
+        </div>
+        <div class="buttons">
+            <button type="button" onclick="insertCategory()">Добавить</button>
+            <button type="button" onclick="updateCategory()">Обновить</button>
+            <button type="button" onclick="deleteCategory()">Удалить</button>
+        </div>
+    </form>
+    <script src="../scripts/categories.js"></script>        
+
+</body>
+</html>
