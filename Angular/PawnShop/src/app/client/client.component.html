@@ -1,0 +1,74 @@
+<h1>Список пользователей</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addClient()" />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td>Дата выдачи</td>
+            <td>Кем выдан</td>
+            <td>Номер паспорта</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clients">
+            <ng-template [ngTemplateOutlet]="loadTemplate(client)" 
+                        [ngTemplateOutletContext]="{ $implicit: client}">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<div>{{statusMessage}}</div>
+    
+    
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-client>
+    <td>{{client.id}}</td>
+    <td>{{client.name}}</td>
+    <td>{{client.surname}}</td>
+    <td>{{client.patronomyc}}</td>
+    <td>{{client.date}}</td>
+    <td>{{client.giver}}</td>
+    <td>{{client.number}}</td>
+    <td>
+        <input type="button" value="Изменить" class="btn btn-default" (click)="editClient(client)" />
+    </td>
+    <td>
+        <input type="button" value="Удалить" (click)="deleteClient(client)" class="btn btn-danger" />
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="number" [(ngModel)]="editedClient.id" readonly disabled class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedClient.name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedClient.surname" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedClient.patronomyc" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedClient.date" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedClient.giver" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedClient.number" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="saveClient()" class="btn btn-success" />
+    </td>
+    <td>
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </td>
+</ng-template>
