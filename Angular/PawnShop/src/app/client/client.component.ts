@@ -11,11 +11,11 @@ import { ClientService } from './client.service';
 export class ClientComponent implements OnInit {
   //типы шаблонов
   @ViewChild('readOnlyTemplate', { static: false }) readOnlyTemplate:
-    | TemplateRef<any>
-    | undefined;
+    TemplateRef<any> |
+    null | undefined;
   @ViewChild('editTemplate', { static: false }) editTemplate:
-    | TemplateRef<any>
-    | undefined;
+    TemplateRef<any> |
+    null | undefined;
 
   editedClient: Client | null = null;
   clients: Array<Client>;
@@ -35,6 +35,7 @@ export class ClientComponent implements OnInit {
     this.serv.getClients().subscribe((data: Array<Client>) => {
       this.clients = data;
     });
+    console.log(this.clients)
   }
   // добавление пользователя
   addClient() {
