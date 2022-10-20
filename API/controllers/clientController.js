@@ -2,7 +2,17 @@ import sql from "mssql";
 
 export async function getClients(req, res) {
     const result = await sql.query`select * from Клиенты`;
-    res.json(result.recordset);
+    const clientsDB = result.recordset;
+    const clients = {
+        id: clientsDB.Клиент,
+        name: clientsDB["Имя"],
+        surname: clientsDB["Фамилия"],
+        patronomyc: clientsDB["Отчество"],
+        giver: clientsDB["Кем выдан паспорт"],
+        date: clientsDB["Дата выдачи паспорта"],
+        number: clientsDB["Номер паспорта"],
+    };
+    res.json(clients);
 }
 
 export async function getClient(req, res) {
