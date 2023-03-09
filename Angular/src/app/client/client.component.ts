@@ -6,6 +6,7 @@ import { ClientService } from './client.service';
 @Component({
   selector: 'clients',
   templateUrl: './client.component.html',
+  styleUrls: ['../app.component.scss'],
   providers: [ClientService],
 })
 export class ClientComponent implements OnInit {
@@ -20,7 +21,7 @@ export class ClientComponent implements OnInit {
   editedClient: Client | null = null;
   clients: Array<Client>;
   isNewRecord: boolean = false;
-  statusMessage: string = '';
+  statusMessage: string = 'Статус';
 
   constructor(private serv: ClientService) {
     this.clients = new Array<Client>();
@@ -34,8 +35,10 @@ export class ClientComponent implements OnInit {
   private loadClients() {
     this.serv.getClients().subscribe((data: Array<Client>) => {
       this.clients = data;
+      this.clients.map(elem => {
+        elem.date = elem.date.substring(0,10)
+      }) 
     });
-    console.log(this.clients)
   }
   // добавление пользователя
   addClient() {
@@ -75,7 +78,7 @@ export class ClientComponent implements OnInit {
       this.editedClient = null;
     } else {
       // изменяем пользователя
-      this.serv.updateClient(this.editedClient as Client).subscribe((_) => {
+      this.serv.updateClient(this.editedClient as Client).subscribe(( ) => {
         (this.statusMessage = 'Данные успешно обновлены'), this.loadClients();
       });
       this.editedClient = null;

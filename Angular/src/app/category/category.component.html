@@ -1,0 +1,58 @@
+<h1>Список категорий</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addCategory()" />
+
+<div class="scroll-table">
+<table>
+    <thead>
+        <tr>
+            <td>Название</td>
+
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories">
+            <ng-template [ngTemplateOutlet]="loadTemplate(category)" 
+                        [ngTemplateOutletContext]="{ $implicit: category}">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div>{{statusMessage}}</div> 
+    
+    
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-category>
+    <td>{{category.name}}</td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+                <input type="button" value="Изменить" class="btn btn-default" (click)="editCategory(category)" />
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="Удалить" (click)="deleteCategory(category)" class="btn btn-danger" />
+            </div>
+        </div>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="text" [(ngModel)]="editedCategory.name" class="form-control" />
+    </td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+                <input type="button" value="Сохранить" (click)="saveCategory()" class="btn btn-success" />
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+            </div>  
+        </div>
+
+
+    </td>
+
+</ng-template>

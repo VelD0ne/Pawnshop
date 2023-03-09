@@ -1,0 +1,24 @@
+<h1>Отчёт с {{firstDate}} по {{secondDate}}</h1>
+<div class="gradientborder">
+    <input class="search" type="date" [(ngModel)]="firstDate"  >
+    <input class="search" type="date" [(ngModel)]="secondDate"  >
+    <button (click)="loadReports()">Создать отчёт</button>
+</div>
+<div class="scroll-table">
+<table>
+    <thead>
+        <tr>
+            <td >Название категории</td>
+            <td >Средняя сумма</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let report of reports">
+            <td>{{report.categoryName}}</td>
+            <td>{{report.average}}</td>
+          </tr>
+        
+    </tbody>
+</table>
+</div>    

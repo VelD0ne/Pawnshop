@@ -1,0 +1,43 @@
+<h1>Вся база данных</h1>
+<div class="gradientborder">
+    <input class="search" type="text" placeholder="Поиск" [(ngModel)]="search"  >
+</div>
+<div class="scroll-table">
+<table  matSort (matSortChange)="sortData($event)">
+    <thead>
+        <tr>
+            <td mat-sort-header="clientName">Имя</td>
+            <td mat-sort-header="surname">Фамилия</td>
+            <td mat-sort-header="giver">Кем выдан паспорт</td>
+            <td mat-sort-header="giveDate">Дата выдачи</td>
+            <td mat-sort-header="passportNumber">Номер паспорта</td>
+            <td mat-sort-header="dealNumber">Номер договора</td>
+            <td mat-sort-header="sum">Комиссионные</td>
+            <td mat-sort-header="returnDate">Дата возврата</td>
+            <td mat-sort-header="leaseDate">Дата сдачи</td>
+            <td mat-sort-header="productName">Название</td>
+            <td mat-sort-header="categoryName">Категория</td>
+            <td mat-sort-header="cost">Стоимость</td>
+            <td mat-sort-header="amount">Количество</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let view of sortedViews | filter:search">
+            <td>{{view.clientName}}</td>
+            <td>{{view.surname}}</td>
+            <td>{{view.giver}}</td>
+            <td>{{view.giveDate}}</td>
+            <td>{{view.passportNumber}}</td>
+            <td>{{view.dealNumber}}</td>
+            <td>{{view.sum}}</td>
+            <td>{{view.returnDate}}</td>
+            <td>{{view.leaseDate}}</td>
+            <td>{{view.productName}}</td>
+            <td>{{view.categoryName}}</td>
+            <td>{{view.cost}}</td>
+            <td>{{view.amount}}</td>
+          </tr>
+        
+    </tbody>
+</table>
+</div>    

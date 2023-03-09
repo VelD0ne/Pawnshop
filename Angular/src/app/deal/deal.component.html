@@ -1,0 +1,81 @@
+<h1>Список договоров</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addDeal()" />
+
+<div class="scroll-table">
+<table>
+    <thead>
+        <tr>
+            <td>Номер договора</td>
+            <td>Комиссионные</td>
+            <td>Дата возврата</td>
+            <td>Дата регистрации</td>
+            <td>Клиент</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let deal of deals">
+            <ng-template [ngTemplateOutlet]="loadTemplate(deal)" 
+                        [ngTemplateOutletContext]="{ $implicit: deal}">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div>{{statusMessage}}</div> 
+    
+    
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-deal>
+    <td>{{deal.number}}</td>
+    <td>{{deal.sum}}</td>
+    <td>{{deal.returnDate}}</td>
+    <td>{{deal.registrationDate}}</td>
+    <td>{{deal.clientName}}</td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+            <input type="button" value="Изменить" class="btn btn-default" (click)="editDeal(deal)" />
+        </div>
+        <div class="btn-wrap">
+            <input type="button" value="Удалить" (click)="deleteDeal(deal)" class="btn btn-danger" />
+        </div>
+        </div>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="number" [(ngModel)]="editedDeal.number" class="form-control" />
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="editedDeal.sum" class="form-control" />
+    </td>
+    <td>
+        <input type="date" [(ngModel)]="editedDeal.returnDate" class="form-control" />
+    </td>
+    <td>
+        <input type="date" [(ngModel)]="editedDeal.registrationDate" class="form-control" />
+    </td>
+    <td>
+        <select class="form-control" [(ngModel)]="editedDeal.client">
+            <option  *ngFor="let client of clients" [value]="client.id">
+                {{client.name}}
+            </option>
+        </select>
+    </td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+                <input type="button" value="Сохранить" (click)="saveDeal()" class="btn btn-success" />
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+            </div>  
+        </div>
+
+
+    </td>
+
+</ng-template>

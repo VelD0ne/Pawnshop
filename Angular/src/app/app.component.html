@@ -1,0 +1,22 @@
+<header>
+    <ul class="header">
+        <li><a (click)="switch = 'clients'">Клиенты</a></li>
+        <li><a (click)="switch = 'products'">Товары</a></li>
+        <li><a (click)="switch = 'categories'">Категории товаров</a></li>
+        <li><a (click)="switch = 'leases'">Сдачи в ломбард</a></li>
+        <li><a (click)="switch = 'deals'">Договоры</a></li>
+        <li><a (click)="switch = 'views'">Представление</a></li>
+        <li><a (click)="switch = 'reports'">Отчёт</a></li>
+    </ul>
+</header>
+
+<container [ngSwitch]="switch">
+    <clients *ngSwitchCase="'clients'">...</clients>
+    <products *ngSwitchCase="'products'"></products>
+    <categories *ngSwitchCase="'categories'"></categories>
+    <leases *ngSwitchCase="'leases'"></leases>
+    <deals *ngSwitchCase="'deals'"></deals>
+    <views *ngSwitchCase="'views'"></views>
+    <report *ngSwitchCase="'reports'"></report>
+
+</container>

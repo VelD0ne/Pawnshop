@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    background-color: #212529;
+    color: white;
+}
+
+
+.scroll-table {
+	overflow: auto;
+    position: relative;
+    height: 500px;
+    margin-top: 20px;
+
+}
+
+.scroll-table table {
+	vertical-align: top;
+	overflow-x: auto;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;
+}
+
+table {
+    color: white;
+	width: 100%;
+	overflow-y: scroll;
+	overflow-x: auto;
+    border-collapse: collapse;
+    margin-top: 0px;
+	margin-bottom: 20px;
+    border: 0;
+}
+
+
+
+table tr:hover {
+    background-color: #4869896a;
+    /* background-color: #2145686a; */
+}
+
+
+tr {
+    cursor: pointer; 
+    user-select: none;
+}
+
+td {
+    text-align: left;
+	padding: 10px 15px;
+	vertical-align: top;
+}
+
+thead {
+    background-color: black;
+    color: white;
+    position: sticky;
+    border: 0;
+    top:0;
+    font-size: 1rem;
+}
+
+tbody {
+    font-size: 0.8rem;
+    
+    tr {
+	    border: 1px solid #ddd;
+    }
+    td {
+	    border: 1px solid #ddd;
+    }
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+} 
+::-webkit-scrollbar-track {
+	/* box-shadow: inset 0 0 6px #f6ff00;  */
+	box-shadow: inset 0 0 6px white; 
+
+} 
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-bottom: 20px;
+
+    li {
+        flex: 1 1 100px;
+        height: 50;
+        line-height: 50px;
+        border: 1px solid #dddddd;
+        color: white;
+        font-weight: bold;
+        font-size: 1.4rem;
+        text-align: center;
+    }
+    a {
+        cursor: pointer; 
+        user-select: none;
+    }
+}
+
+input {
+	padding: 10px;
+	margin:10px 0; 
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	padding:10px;
+	border-radius:10px;
+	width: 31%;
+}

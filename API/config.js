@@ -13,7 +13,7 @@ export const config = {
 export const dbConfig = {
     user: process.env.DB_USER || "Admin",
     password: process.env.DB_PWD || "Admin",
-    database: process.env.DB_NAME || "ЛомбардКлон",
+    database: process.env.DB_NAME || "Ломбард",
     server: process.env.DB_SERVER || "localhost\\SQLSERVER",
     options: {
         trustServerCertificate: true,

@@ -1,16 +1,16 @@
-<h1>Список пользователей</h1>
+<h1>Список клиентов</h1>
 <input type="button" value="Добавить" class="btn btn-default" (click)="addClient()" />
-<table class="table table-striped">
+
+<div class="scroll-table">
+<table>
     <thead>
         <tr>
-            <td>Id</td>
             <td>Имя</td>
             <td>Фамилия</td>
             <td>Отчество</td>
             <td>Дата выдачи</td>
             <td>Кем выдан</td>
             <td>Номер паспорта</td>
-            <td></td>
             <td></td>
         </tr>
     </thead>
@@ -22,12 +22,12 @@
         </tr>
     </tbody>
 </table>
-<div>{{statusMessage}}</div>
+</div>
+<div>{{statusMessage}}</div> 
     
     
 <!--шаблон для чтения-->
 <ng-template #readOnlyTemplate let-client>
-    <td>{{client.id}}</td>
     <td>{{client.name}}</td>
     <td>{{client.surname}}</td>
     <td>{{client.patronomyc}}</td>
@@ -35,18 +35,19 @@
     <td>{{client.giver}}</td>
     <td>{{client.number}}</td>
     <td>
-        <input type="button" value="Изменить" class="btn btn-default" (click)="editClient(client)" />
-    </td>
-    <td>
-        <input type="button" value="Удалить" (click)="deleteClient(client)" class="btn btn-danger" />
+        <div class="btns">
+            <div class="btn-wrap">
+            <input type="button" value="Изменить" class="btn btn-default" (click)="editClient(client)" />
+        </div>
+        <div class="btn-wrap">
+            <input type="button" value="Удалить" (click)="deleteClient(client)" class="btn btn-danger" />
+        </div>
+        </div>
     </td>
 </ng-template>
    
 <!--шаблон для редактирования-->
 <ng-template #editTemplate>
-    <td>
-        <input type="number" [(ngModel)]="editedClient.id" readonly disabled class="form-control" />
-    </td>
     <td>
         <input type="text" [(ngModel)]="editedClient.name" class="form-control" />
     </td>
@@ -57,7 +58,7 @@
         <input type="text" [(ngModel)]="editedClient.patronomyc" class="form-control" />
     </td>
     <td>
-        <input type="text" [(ngModel)]="editedClient.date" class="form-control" />
+        <input type="date" [(ngModel)]="editedClient.date" class="form-control" />
     </td>
     <td>
         <input type="text" [(ngModel)]="editedClient.giver" class="form-control" />
@@ -66,9 +67,16 @@
         <input type="text" [(ngModel)]="editedClient.number" class="form-control" />
     </td>
     <td>
-        <input type="button" value="Сохранить" (click)="saveClient()" class="btn btn-success" />
+        <div class="btns">
+            <div class="btn-wrap">
+                <input type="button" value="Сохранить" (click)="saveClient()" class="btn btn-success" />
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+            </div>  
+        </div>
+
+
     </td>
-    <td>
-        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
-    </td>
+
 </ng-template>

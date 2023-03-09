@@ -1,0 +1,75 @@
+<h1>Список сдач в ломбард</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addLease()" />
+
+<div class="scroll-table">
+<table>
+    <thead>
+        <tr>
+            <td>Дата сдачи</td>
+            <td>Товар</td>
+            <td>Договор</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lease of leases">
+            <ng-template [ngTemplateOutlet]="loadTemplate(lease)" 
+                        [ngTemplateOutletContext]="{ $implicit: lease}">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div>{{statusMessage}}</div> 
+    
+    
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-lease>
+    <td>{{lease.date}}</td>
+    <td>{{lease.productName}}</td>
+    <td>{{lease.dealName}}</td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+            <input type="button" value="Изменить" class="btn btn-default" (click)="editLease(lease)" />
+        </div>
+        <div class="btn-wrap">
+            <input type="button" value="Удалить" (click)="deleteLease(lease)" class="btn btn-danger" />
+        </div>
+        </div>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="date" [(ngModel)]="editedLease.date" class="form-control" />
+    </td>
+    <td>
+        <select class="form-control" [(ngModel)]="editedLease.product">
+            <option  *ngFor="let product of products" [value]="product.id">
+                {{product.name}}
+            </option>
+        </select>
+    </td>
+    <td>
+        <select class="form-control" [(ngModel)]="editedLease.deal">
+            <option  *ngFor="let deal of deals" [value]="deal.id">
+                {{deal.number}}
+            </option>
+        </select>
+    </td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+                <input type="button" value="Сохранить" (click)="saveLease()" class="btn btn-success" />
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+            </div>  
+        </div>
+
+
+    </td>
+
+</ng-template>

@@ -4,8 +4,8 @@ const router = Router();
 
 router.get("/deal", dealController.getDeals);
 router.get("/deal/:id", dealController.getDeal);
-router.put("/deal", dealController.addDeal);
-router.post("/deal/:id", dealController.updateDeal);
+router.post("/deal", dealController.addDeal);
+router.put("/deal", dealController.updateDeal);
 router.delete("/deal/:id", dealController.deleteDeal);
 
 export { router as dealRouter };

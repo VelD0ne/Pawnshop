@@ -1,0 +1,76 @@
+<h1>Список товаров</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addProduct()" />
+
+<div class="scroll-table">
+<table>
+    <thead>
+        <tr>
+            <td>Название</td>
+            <td>Количество</td>
+            <td>Стоимость</td>
+            <td>Категория</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <ng-template [ngTemplateOutlet]="loadTemplate(product)" 
+                        [ngTemplateOutletContext]="{ $implicit: product}">
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div>{{statusMessage}}</div> 
+    
+    
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-product>
+    <td>{{product.name}}</td>
+    <td>{{product.amount}}</td>
+    <td>{{product.cost}}</td>
+    <td>{{product.categoryName}}</td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+            <input type="button" value="Изменить" class="btn btn-default" (click)="editProduct(product)" />
+        </div>
+        <div class="btn-wrap">
+            <input type="button" value="Удалить" (click)="deleteProduct(product)" class="btn btn-danger" />
+        </div>
+        </div>
+    </td>
+</ng-template>
+   
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="text" [(ngModel)]="editedProduct.name" class="form-control" />
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="editedProduct.amount" class="form-control" />
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="editedProduct.cost" class="form-control" />
+    </td>
+    <td>
+        <select class="form-control" [(ngModel)]="editedProduct.category">
+            <option  *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+            </option>
+        </select>
+    </td>
+    <td>
+        <div class="btns">
+            <div class="btn-wrap">
+                <input type="button" value="Сохранить" (click)="saveProduct()" class="btn btn-success" />
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+            </div>  
+        </div>
+
+
+    </td>
+
+</ng-template>

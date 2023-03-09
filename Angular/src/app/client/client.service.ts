@@ -18,10 +18,7 @@ export class ClientService {
     });
   }
   updateClient(client: Client) {
-    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.put<Client>(this.url, JSON.stringify(client), {
-      headers: myHeaders,
-    });
+    return this.http.put<Client>(this.url, client);
   }
   deleteClient(id: number) {
     return this.http.delete<Client>(this.url + '/' + id);
